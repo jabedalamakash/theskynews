@@ -4,9 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(req,res) {
     try{
         const prisma=new PrismaClient();
-        // let {searchParams}=new URL(req.url);
-        // let type= searchParams.get('type');
-        const result=await prisma.socials.findMany()
+        const result=await prisma.socials.findMany();
         return NextResponse.json({status:"success",data:result})
     }
     catch (e) {
