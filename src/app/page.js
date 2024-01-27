@@ -44,16 +44,25 @@ export default async function Home() {
   return (
     <UserLayout>
       <section className="w-full md:w-[80%] px-5 md:px-0 mx-auto">
-        <div className="py-10">
+        <div className="my-14">
           <SliderNews data={featureData.data} />
         </div>
 
         <div className="flex flex-col md:flex-row gap-20">
-          <div>
+          <section>
+            <div className="mb-20">
             <NewsList data={sportsData.data} />
+            </div>
+            <div className="mb-20">
             <NewsList data={techData.data} />
+            </div>
+            <div className="mb-20">
             <NewsList data={enterData.data} />
-          </div>
+            </div>
+           
+            
+            
+          </section>
           <div>
           <LatestNews data={latestData.data}/>
             <PopularNews data={popularData.data} />

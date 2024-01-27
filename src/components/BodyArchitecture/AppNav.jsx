@@ -32,7 +32,7 @@ export default async function AppNav() {
           <Link href={data[0].linkedin}><FaLinkedin size={30}/></Link></div>
       </div>
       <div className="text-center mb-5 py-5">
-      <Link className='font-bold text-5xl text-center ' href={"/"}>The Sky News</Link> 
+      <Link className='font-bold text-5xl text-blue-600 text-center ' href={"/"}>The Sky News</Link> 
       </div> 
       <div>
       <Navbar data={navData}/>

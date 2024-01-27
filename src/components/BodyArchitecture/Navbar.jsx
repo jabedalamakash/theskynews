@@ -19,6 +19,7 @@ export default function Navbar({ data }) {
   };
 
   const pathname = usePathname();
+  console.log(pathname);
   const router = useRouter();
   return (
     <div className="flex flex-col md:flex-row mx-auto md:mx-0 justify-center md:justify-between py-5">
@@ -30,11 +31,10 @@ export default function Navbar({ data }) {
           Home
         </Link>
         {data.map((item) => {
-          const url = item.name.toLowerCase();
           return (
             <Link
               className={`link ${
-                pathname === `/${url}` ? "font-bold" : "md:text-lg no-underline"
+                pathname === `/category?category=${item.name}` ? "font-bold" : "md:text-lg no-underline"
               }`}
               key={item.id}
               href={`/category?category=${item.name}`}

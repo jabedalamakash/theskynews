@@ -59,11 +59,9 @@ export default function Contact() {
           Subscribe
         </h5>
         <h1 className="capitalize text-2xl mb-3 text-center">
-          subscribe to get the latest news 
+          Get the latest news update
         </h1>
-        <p className="capitalize pb-10 text-gray-500 text-center">
-          please drop your email below to get daily news
-        </p>
+
         <form onSubmit={handleSubmit} className=" text-center  mx-auto">
           <input
             type="email"
