@@ -56,7 +56,7 @@ export default function Navbar({ data }) {
             placeholder="search"
           />
           <button className="px-3 bg-blue-600 border  text-white py-2 rounded-lg ">
-            Submit
+            Search
           </button>
         </div>
         <div className="">

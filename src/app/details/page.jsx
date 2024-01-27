@@ -1,19 +1,22 @@
 import NewsDeails from '@/components/NewsDeails'
 import PopularNews from '@/components/PopularNews';
 import UserLayout from '@/components/BodyArchitecture/UserLayout'
-
+import Subscribe from '@/components/Subscribe';
+import LatestNews from '@/components/LatestNews';
 
 const syncData=async(slug)=>{
-const fetcher= await fetch(`https://theskynews.vercel.app/api/news/details?title=${slug}`);
-const fetcherPopular= await fetch("https://theskynews.vercel.app/api/news/type?type=popular");
+const fetcher= await fetch(`http://localhost:3000/api/news/details?title=${slug}`);
+const fetcherPopular= await fetch("http://localhost:3000/api/news/type?type=popular");
+const fetcherLatest = await fetch("http://localhost:3000/api/latestnews/");
 const fetchData= await fetcher.json();
+const latestData = await fetcherLatest.json();
 const popularData= await fetcherPopular.json();
-return {fetchData, popularData};
+return {fetchData, popularData,latestData};
 }
 export default async function page({searchParams}) {
     // console.log(searchParams.title);
     const title=searchParams.title;
-    const {popularData,fetchData}=await syncData(title)
+    const {popularData,fetchData,latestData}=await syncData(title)
     // console.log(fetchData)
   return (
     <div>
@@ -23,7 +26,9 @@ export default async function page({searchParams}) {
         <NewsDeails data={fetchData.data}/>
         </div>
         <div className='w-[30%] mx-auto'>
+        <LatestNews data={latestData.data}/>
         <PopularNews data={popularData.data}/>
+        <Subscribe/>
         </div>
         </section>
 

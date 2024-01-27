@@ -2,19 +2,23 @@
 import UserLayout from '@/components/BodyArchitecture/UserLayout'
 import NewsList from '@/components/NewsList';
 import PopularNews from '@/components/PopularNews';
-// import { useSearchParams } from 'next/navigation'
+import Subscribe from '@/components/Subscribe';
+import LatestNews from "@/components/LatestNews";
+
 const syncData=async(name)=>{
 
-  const fetcher= await fetch(`https://theskynews.vercel.app/api/category?category=${name}`);
-  const fetcherPopular= await fetch("https://theskynews.vercel.app/api/news/type?type=popular");
+  const fetcher= await fetch(`http://localhost:3000/api/category?category=${name}`);
+  const fetcherPopular= await fetch("http://localhost:3000/api/news/type?type=popular");
+  const fetcherLatest = await fetch("http://localhost:3000/api/latestnews/");
   const fetchData= await fetcher.json();
   const popularData= await fetcherPopular.json();
-  return {fetchData, popularData};
+  const latestData = await fetcherLatest.json();
+  return {fetchData, popularData,latestData};
   }
 export default async function page({searchParams}) {
   console.log(searchParams.category);
   const category=searchParams.category;
-    const {popularData,fetchData}=await syncData(category)
+    const {popularData,fetchData,latestData}=await syncData(category)
    
 
   return (
@@ -25,7 +29,9 @@ export default async function page({searchParams}) {
         < NewsList data={fetchData.data}/>
         </div>
         <div>
+        <LatestNews data={latestData.data}/>
           <PopularNews data={popularData.data}/>
+         <Subscribe/>
         </div>
         </div>
         </section>
