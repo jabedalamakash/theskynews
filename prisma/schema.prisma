@@ -43,24 +43,24 @@ model news_list {
   updatedAt  DateTime   @default(now()) @updatedAt @db.Timestamp(0)
 }
 
-// model users {
-//   id        Int        @id @default(autoincrement())
-//   firstName String     @db.VarChar(50)
-//   lastName  String     @db.VarChar(50)
-//   email     String     @unique @db.VarChar(50)
-//   mobile    String     @db.VarChar(50)
-//   password  String     @db.VarChar(50)
-//   otp       String     @db.VarChar(10)
-//   comments  comments[]
-//   createdAt DateTime   @default(now()) @db.Timestamp(0)
-//   updatedAt DateTime   @default(now()) @updatedAt @db.Timestamp(0)
-// }
+model users {
+  id        Int        @id @default(autoincrement())
+  firstName String     @db.VarChar(50)
+  lastName  String     @db.VarChar(50)
+  email     String     @unique @db.VarChar(50)
+  mobile    String     @db.VarChar(50)
+  password  String     @db.VarChar(50)
+  otp       String     @db.VarChar(10)
+  comments  comments[]
+  createdAt DateTime   @default(now()) @db.Timestamp(0)
+  updatedAt DateTime   @default(now()) @updatedAt @db.Timestamp(0)
+}
 
 model comments {
   id           Int       @id @default(autoincrement())
   userID       Int
   postID       Int
-  // users        users     @relation(fields: [userID], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  users        users     @relation(fields: [userID], references: [id], onDelete: Restrict, onUpdate: Cascade)
   news_list    news_list @relation(fields: [postID], references: [id], onDelete: Restrict, onUpdate: Cascade)
   descriptions String    @db.VarChar(1000)
 

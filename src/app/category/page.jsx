@@ -16,7 +16,7 @@ const syncData=async(name)=>{
   return {fetchData, popularData,latestData};
   }
 export default async function page({searchParams}) {
-  console.log(searchParams.category);
+  // console.log(searchParams.category);
   const category=searchParams.category;
     const {popularData,fetchData,latestData}=await syncData(category)
    

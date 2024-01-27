@@ -24,7 +24,7 @@ export default function Navbar({ data }) {
     <div className="flex flex-col md:flex-row mx-auto md:mx-0 justify-center md:justify-between py-5">
       <nav className="space-x-5 overflow-x-auto mb-5 md:mb-0 ">
         <Link
-          className={`link ${pathname === "/" ? "font-bold" : "md:text-lg"}`}
+          className={`link ${pathname === "/" ? "font-bold" : "md:text-lg no-underline"}`}
           href={"/"}
         >
           Home
@@ -34,7 +34,7 @@ export default function Navbar({ data }) {
           return (
             <Link
               className={`link ${
-                pathname === `/${url}` ? "font-bold" : "md:text-lg"
+                pathname === `/${url}` ? "font-bold" : "md:text-lg no-underline"
               }`}
               key={item.id}
               href={`/category?category=${item.name}`}
