@@ -1,33 +1,72 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
+export default function Navbar({ data }) {
+  const obj = {
+    text: "",
+  };
+  const [search, setSearch] = useState({ ...obj });
 
+  const handleChange = (key, value) => {
+    setSearch({
+      ...search,
+      [key]: value,
+    });
+  };
 
-export default function Navbar({data}) {
-  const pathname = usePathname()
-
+  const pathname = usePathname();
+  const router = useRouter();
   return (
-    <div className="flex flex-col md:flex-row mx-auto justify-center md:justify-between py-5">
-        <nav className="space-x-5 overflow-x-auto mb-5 md:mb-0 ">
-          <Link className={`link ${pathname === '/' ? 'font-bold' : 'md:text-lg'}`} href={"/"}>Home</Link>
-          {
-            data.map((item)=>{
-               const url=(item.name).toLowerCase()
-              return (
-                <Link className={`link ${pathname === `/${url}` ? 'font-bold' : 'md:text-lg'}`} key={item.id} href={`/category?category=${item.name}`}>{item.name}</Link>
-                // <Link className="text-lg font-bold" key={item.id} href={""}>{item.name}</Link>
-              )
-            })
-          }
-
-        </nav>
-        <div className="flex mx-auto md:mx-0 gap-5">
-          <input type="text" className="border-2 px-3 border-gray-700 rounded-lg" placeholder="search" />
-          <button className=" px-3 bg-blue-600 text-white rounded-lg">Submit</button>
+    <div className="flex flex-col md:flex-row mx-auto md:mx-0 justify-center md:justify-between py-5">
+      <nav className="space-x-5 overflow-x-auto mb-5 md:mb-0 ">
+        <Link
+          className={`link ${pathname === "/" ? "font-bold" : "md:text-lg"}`}
+          href={"/"}
+        >
+          Home
+        </Link>
+        {data.map((item) => {
+          const url = item.name.toLowerCase();
+          return (
+            <Link
+              className={`link ${
+                pathname === `/${url}` ? "font-bold" : "md:text-lg"
+              }`}
+              key={item.id}
+              href={`/category?category=${item.name}`}
+            >
+              {item.name}
+            </Link>
+          );
+        })}
+      </nav>
+      <div className="flex items-center gap-5">
+        <div className="flex  mx-auto md:mx-0 gap-5">
+          <input
+            type="text"
+            value={search.text}
+            onChange={(e) => {
+              handleChange("text", e.target.value);
+            }}
+            className="border-2 px-3 border-gray-700 rounded-lg"
+            placeholder="search"
+          />
+          <button className="px-3 bg-blue-600 border  text-white py-2 rounded-lg ">
+            Submit
+          </button>
         </div>
-
+        <div className="">
+          <Link href={"/signin"}>
+            <button className="px-3 border font-bold border-blue-600 text-blue-600  bg-white  py-2 rounded-lg">
+              Sign In
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
