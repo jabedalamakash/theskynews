@@ -6,17 +6,17 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Navbar({ data }) {
-  const obj = {
-    text: "",
-  };
-  const [search, setSearch] = useState({ ...obj });
 
-  const handleChange = (key, value) => {
-    setSearch({
-      ...search,
-      [key]: value,
-    });
-  };
+  const [search, setSearch] = useState("");
+
+  const handleChange =(e)=>{
+    setSearch(e.target.value);
+}
+const handleClick=(e)=>{
+  e.preventDefault();
+  setSearch("");
+  router.push(`/search?keyword=${search}`); 
+}
 
   const pathname = usePathname();
   console.log(pathname);
@@ -48,14 +48,14 @@ export default function Navbar({ data }) {
         <div className="flex  mx-auto md:mx-0 gap-5">
           <input
             type="text"
-            value={search.text}
-            onChange={(e) => {
-              handleChange("text", e.target.value);
-            }}
+            value={search}
+            required
+            onChange={handleChange}
             className="border-2 px-3 border-gray-700 rounded-lg"
             placeholder="search"
           />
-          <button className="px-3 bg-blue-600 border  text-white py-2 rounded-lg ">
+        
+          <button onClick={handleClick} className="px-3 bg-blue-600 border  text-white py-2 rounded-lg ">
             Search
           </button>
         </div>
@@ -70,3 +70,15 @@ export default function Navbar({ data }) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+

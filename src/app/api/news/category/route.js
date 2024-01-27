@@ -11,7 +11,7 @@ export async function GET(req,res) {
                 where:{name:name},
                 include:{
                     news_list:true}
-                // select:{id:true,title:true,short_des:true,img:true,createdAt:true}
+                
         }
         )
         return NextResponse.json({status:"success",data:result})

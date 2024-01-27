@@ -25,10 +25,10 @@ export default async function page({searchParams}) {
     <UserLayout>
       <section className='w-full md:w-[80%] px-5 md:px-0 mx-auto'>
         <div className='flex mt-20 flex-col md:flex-row gap-20'>
-        <div>
+        <div className='md:w-[70%]'>
         < NewsList data={fetchData.data}/>
         </div>
-        <div>
+        <div className='md:w-[30%]'>
         <LatestNews data={latestData.data}/>
           <PopularNews data={popularData.data}/>
          <Subscribe/>

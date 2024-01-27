@@ -9,7 +9,7 @@ export default function NewsDeails({ data }) {
   const formattedDate = new Date(data[0].createdAt);
 
   const date = formattedDate.toLocaleString("en-BD", options);
-  console.log(date);
+  // console.log(date);
   return (
     <div>
       <Link
@@ -27,7 +27,7 @@ export default function NewsDeails({ data }) {
         height={1000}
         width={1000}
         alt={data[0].title}
-        className="mb-4 md:h-[300px]"
+        className="mb-10 md:h-[400px]"
       />
       {parser(data[0].long_des)}
     </div>
