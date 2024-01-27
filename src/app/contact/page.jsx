@@ -3,7 +3,7 @@ import UserLayout from '@/components/BodyArchitecture/UserLayout'
 import parse from 'html-react-parser';
 const syncData=async()=>{
  
-  const fetcher= await fetch("/api/policies?type=contact");
+  const fetcher= await fetch("https://theskynews.vercel.app/api/policies?type=contact");
   const fetchData= await fetcher.json();
   return fetchData;
   }

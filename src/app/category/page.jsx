@@ -5,8 +5,8 @@ import PopularNews from '@/components/PopularNews';
 // import { useSearchParams } from 'next/navigation'
 const syncData=async(name)=>{
 
-  const fetcher= await fetch(`/api/category?category=${name}`);
-  const fetcherPopular= await fetch("/api/news/type?type=popular");
+  const fetcher= await fetch(`https://theskynews.vercel.app/api/category?category=${name}`);
+  const fetcherPopular= await fetch("https://theskynews.vercel.app/api/news/type?type=popular");
   const fetchData= await fetcher.json();
   const popularData= await fetcherPopular.json();
   return {fetchData, popularData};

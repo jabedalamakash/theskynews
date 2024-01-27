@@ -7,11 +7,11 @@ import SliderNews from "@/components/SliderNews";
 
 
 const syncData=async()=>{
-  const fetcherSports= await fetch("/api/category?category=Sports");
-  const fetcherTech= await fetch("/api/category?category=Tech");
-  const fetcherEntertainment= await fetch("/category?category=Entertainment");
-  const fetcherPopular= await fetch("/api/news/type?type=popular");
-  const fetcherFeatured= await fetch("/api/news/type?type=featured");
+  const fetcherSports= await fetch("https://theskynews.vercel.app/api/category?category=Sports");
+  const fetcherTech= await fetch("https://theskynews.vercel.app/api/category?category=Tech");
+  const fetcherEntertainment= await fetch("https://theskynews.vercel.app/category?category=Entertainment");
+  const fetcherPopular= await fetch("https://theskynews.vercel.app/api/news/type?type=popular");
+  const fetcherFeatured= await fetch("https://theskynews.vercel.app/api/news/type?type=featured");
   const sportsData= await fetcherSports.json();
   const techData= await fetcherTech.json();
   const enterData= await fetcherEntertainment.json();

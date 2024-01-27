@@ -4,8 +4,8 @@ import UserLayout from '@/components/BodyArchitecture/UserLayout'
 
 
 const syncData=async(slug)=>{
-const fetcher= await fetch(`/api/news/details?title=${slug}`);
-const fetcherPopular= await fetch("/api/news/type?type=popular");
+const fetcher= await fetch(`https://theskynews.vercel.app/api/news/details?title=${slug}`);
+const fetcherPopular= await fetch("https://theskynews.vercel.app/api/news/type?type=popular");
 const fetchData= await fetcher.json();
 const popularData= await fetcherPopular.json();
 return {fetchData, popularData};
