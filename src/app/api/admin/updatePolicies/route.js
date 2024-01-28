@@ -5,11 +5,11 @@ export async function PATCH(req,res) {
     try{
         const prisma=new PrismaClient();
         let reqBody=await req.json();
-        const {type}=reqBody
+        const {type,long_des}=reqBody
         let {searchParams}=new URL(req.url);
         let id= Number(searchParams.get('id'));
         const result=await prisma.policies.update(
-            {where:{id:id},data:{type}})
+            {where:{id:id},data:{type,long_des}})
         return NextResponse.json({status:"success",data:result})
     }
     catch (e) {

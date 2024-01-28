@@ -24,9 +24,9 @@ export default async function AppFooter() {
         </div>
 
         <div className='flex justify-center items-center space-x-6 mb-5'>
-        <Link className='border-2 border-blue-600 p-3' href={"/privacy"}>Privacy Policy</Link>
-          <Link className='border-2 border-blue-600 p-3' href={"/about"}>About Us</Link>
-          <Link className='border-2 border-blue-600 p-3' href={"contact"}>Contact Us</Link>
+        <Link className='border-2 border-blue-600 p-3' href={"/privacy?page=privacy"}>Privacy Policy</Link>
+          <Link className='border-2 border-blue-600 p-3' href={"/about?page=about"}>About Us</Link>
+          <Link className='border-2 border-blue-600 p-3' href={"contact?page=contact"}>Contact Us</Link>
         </div> 
        
        <footer>

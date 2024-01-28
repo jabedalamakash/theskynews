@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from "next/image";
 
 export default function SliderNews({data}) {
-  console.log(data)
+  // console.log(data)
   return (
     <section>
       <div className="carousel w-full">

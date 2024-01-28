@@ -20,7 +20,7 @@ export default async function page({searchParams}) {
  
   const keyword=searchParams.keyword;
     const {popularData,fetchData,latestData}=await syncData(keyword)
-    console.log(fetchData);
+    // console.log(fetchData);
 
   return (
     <UserLayout>
