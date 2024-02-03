@@ -3,13 +3,13 @@ import UserLayout from '@/components/BodyArchitecture/UserLayout'
 import parse from 'html-react-parser';
 const syncData=async(title)=>{
  
-  const fetcher= await fetch(`http://localhost:3000/api/policies?type=${title}`);
+  const fetcher= await fetch(`${process.env.FETCH_URL}/api/policies?type=${title}`);
   const fetchData= await fetcher.json();
   return fetchData;
   }
 export default async function page({searchParams}) {
   
-  console.log(searchParams.page);
+  // console.log(searchParams.page);
  
   const contact=searchParams.page;
     const {data}=await syncData(contact)

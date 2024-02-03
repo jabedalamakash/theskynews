@@ -7,9 +7,9 @@ import LatestNews from "@/components/LatestNews";
 
 const syncData=async(name)=>{
 
-  const fetcher= await fetch(`http://localhost:3000/api/news/search?keyword=${name}`);
-  const fetcherPopular= await fetch("http://localhost:3000/api/news/type?type=popular");
-  const fetcherLatest = await fetch("http://localhost:3000/api/latestnews/");
+  const fetcher= await fetch(`${process.env.FETCH_URL}/api/news/search?keyword=${name}`);
+  const fetcherPopular= await fetch(`${process.env.FETCH_URL}/api/news/type?type=popular`);
+  const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
   const fetchData= await fetcher.json();
   const popularData= await fetcherPopular.json();
   const latestData = await fetcherLatest.json();
