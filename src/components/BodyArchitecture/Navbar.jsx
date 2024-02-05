@@ -15,11 +15,17 @@ export default function Navbar({ data }) {
 const handleClick=(e)=>{
   e.preventDefault();
   setSearch("");
-  router.push(`/search?keyword=${search}`); 
+  if(search.length===0){
+    router.push("/"); 
+  }
+  else{
+    router.push(`/search?keyword=${search}`); 
+  }
+  
 }
 
   const pathname = usePathname();
-  console.log(pathname);
+  // console.log(pathname);
   const router = useRouter();
   return (
     <div className="flex flex-col md:flex-row mx-auto md:mx-0 justify-center md:justify-between py-5">
