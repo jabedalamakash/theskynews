@@ -7,21 +7,21 @@ import Subscribe from "@/components/Subscribe";
 
 const syncData = async () => {
   const fetcherSports = await fetch(
-    "http://localhost:3000/api/category?category=Sports"
+    `${process.env.FETCH_URL}/api/category?category=Sports`
   );
   const fetcherTech = await fetch(
-    "http://localhost:3000/api/category?category=Tech"
+    `${process.env.FETCH_URL}/api/category?category=Tech`
   );
   const fetcherEntertainment = await fetch(
-    "http://localhost:3000/api/category?category=Entertainment"
+    `${process.env.FETCH_URL}/api/category?category=Entertainment`
   );
   const fetcherPopular = await fetch(
-    "http://localhost:3000/api/news/type?type=popular"
+    `${process.env.FETCH_URL}/api/news/type?type=popular`
   );
   const fetcherFeatured = await fetch(
-    "http://localhost:3000/api/news/type?type=featured"
+    `${process.env.FETCH_URL}/api/news/type?type=featured`
   );
-  const fetcherLatest = await fetch("http://localhost:3000/api/latestnews/");
+  const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
   const sportsData = await fetcherSports.json();
   const techData = await fetcherTech.json();
   const enterData = await fetcherEntertainment.json();

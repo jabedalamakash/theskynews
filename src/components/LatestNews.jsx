@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function LatestNews({data}) {
-  console.log(data)
+  // console.log(data)
   return (
     <section>
       <h1 className='text-3xl font-bold underline'>Latest News</h1>
