@@ -3,8 +3,9 @@ import parse from "html-react-parser";
 
 const syncData = async (title) => {
   const fetcher = await fetch(
-    `${process.env.FETCH_URL}/api/policies?type=${title}`
+    `/api/policies?type=${title}`
   );
+  // ${process.env.FETCH_URL}
   const fetchData = await fetcher.json();
   return fetchData;
 };
