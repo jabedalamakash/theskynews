@@ -5,9 +5,9 @@ import Subscribe from '@/components/Subscribe';
 import LatestNews from '@/components/LatestNews';
 
 const syncData=async(slug)=>{
-const fetcher= await fetch(`${process.env.FETCH_URL}/api/news/details?title=${slug}`);
-const fetcherPopular= await fetch(`${process.env.FETCH_URL}/api/news/type?type=popular`);
-const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
+const fetcher= await fetch(`/api/news/details?title=${slug}`);
+const fetcherPopular= await fetch(`/api/news/type?type=popular`);
+const fetcherLatest = await fetch(`/api/latestnews/`);
 const fetchData= await fetcher.json();
 
 const latestData = await fetcherLatest.json();
