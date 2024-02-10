@@ -7,22 +7,22 @@ import Subscribe from "@/components/Subscribe";
 
 const syncData = async () => {
   const fetcherSports = await fetch(
-    `/api/category?category=Sports`
+    `https://theskynews.vercel.app/api/category?category=Sports`
   );
   const fetcherTech = await fetch(
-    `/api/category?category=Tech`
+    `https://theskynews.vercel.app/api/category?category=Tech`
   );
   const fetcherEntertainment = await fetch(
-    `/api/category?category=Entertainment`
+    `https://theskynews.vercel.app/api/category?category=Entertainment`
   );
   const fetcherPopular = await fetch(
-    `/api/news/type?type=popular`
+    `https://theskynews.vercel.app/api/news/type?type=popular`
   );
   const fetcherFeatured = await fetch(
-    `/api/news/type?type=featured`
+    `https://theskynews.vercel.app/api/news/type?type=featured`
   );
 
-  const fetcherLatest = await fetch(`/api/latestnews/`);
+  const fetcherLatest = await fetch(`https://theskynews.vercel.app/api/latestnews/`);
   const sportsData = await fetcherSports.json();
   const techData = await fetcherTech.json();
   const enterData = await fetcherEntertainment.json();
