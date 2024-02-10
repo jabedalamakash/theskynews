@@ -7,22 +7,22 @@ import Subscribe from "@/components/Subscribe";
 
 const syncData = async () => {
   const fetcherSports = await fetch(
-    `https://theskynews.vercel.app/api/category?category=Sports`
+    `${process.env.FETCH_URL}/api/category?category=Sports`
   );
   const fetcherTech = await fetch(
-    `https://theskynews.vercel.app/api/category?category=Tech`
+    `${process.env.FETCH_URL}/api/category?category=Tech`
   );
   const fetcherEntertainment = await fetch(
-    `https://theskynews.vercel.app/api/category?category=Entertainment`
+    `${process.env.FETCH_URL}/api/category?category=Entertainment`
   );
   const fetcherPopular = await fetch(
-    `https://theskynews.vercel.app/api/news/type?type=popular`
+    `${process.env.FETCH_URL}/api/news/type?type=popular`
   );
   const fetcherFeatured = await fetch(
-    `https://theskynews.vercel.app/api/news/type?type=featured`
+    `${process.env.FETCH_URL}/api/news/type?type=featured`
   );
 
-  const fetcherLatest = await fetch(`https://theskynews.vercel.app/api/latestnews/`);
+  const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
   const sportsData = await fetcherSports.json();
   const techData = await fetcherTech.json();
   const enterData = await fetcherEntertainment.json();
@@ -41,7 +41,7 @@ const syncData = async () => {
 export default async function Home() {
   const { sportsData, techData, enterData, featureData, popularData,latestData } =
     await syncData();
-  // console.log(latestData)
+ console.log(enterData)
   return (
     <UserLayout>
       <section className="w-full md:w-[80%] px-5 md:px-0 mx-auto">
