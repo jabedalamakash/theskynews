@@ -4,16 +4,22 @@ import UserLayout from '@/components/BodyArchitecture/UserLayout'
 import Subscribe from '@/components/Subscribe';
 import LatestNews from '@/components/LatestNews';
 
-const syncData=async(slug)=>{
-const fetcher= await fetch(`${process.env.FETCH_URL}/api/news/details?title=${slug}`);
-const fetcherPopular= await fetch(`${process.env.FETCH_URL}/api/news/type?type=popular`);
-const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
-const fetchData= await fetcher.json();
-
-const latestData = await fetcherLatest.json();
-const popularData= await fetcherPopular.json();
-return {fetchData, popularData,latestData};
+try{
+  const syncData=async(slug)=>{
+    const fetcher= await fetch(`${process.env.FETCH_URL}/api/news/details?title=${slug}`);
+    const fetcherPopular= await fetch(`${process.env.FETCH_URL}/api/news/type?type=popular`);
+    const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
+    const fetchData= await fetcher.json();
+    
+    const latestData = await fetcherLatest.json();
+    const popularData= await fetcherPopular.json();
+    return {fetchData, popularData,latestData};
+    }
 }
+catch(e){
+  console.error(e.message);
+}
+
 export default async function page({searchParams}) {
     // console.log(searchParams.title);
     const title=searchParams.title;

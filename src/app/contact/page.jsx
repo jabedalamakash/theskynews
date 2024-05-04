@@ -1,13 +1,22 @@
 
 import UserLayout from '@/components/BodyArchitecture/UserLayout'
 import parse from 'html-react-parser';
-const syncData=async(title)=>{
+
+
+try{
+  const syncData=async(title)=>{
  
-  const fetcher= await fetch(`${process.env.FETCH_URL}/api/policies?type=${title}`);
-  
-  const fetchData= await fetcher.json();
-  return fetchData;
-  }
+    const fetcher= await fetch(`${process.env.FETCH_URL}/api/policies?type=${title}`);
+    
+    const fetchData= await fetcher.json();
+    return fetchData;
+    }
+}
+catch(e){
+  console.error(e.message);
+}
+
+
 export default async function page({searchParams}) {
   
   // console.log(searchParams.page);

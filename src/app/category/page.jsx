@@ -5,17 +5,26 @@ import PopularNews from '@/components/PopularNews';
 import Subscribe from '@/components/Subscribe';
 import LatestNews from "@/components/LatestNews";
 
-const syncData=async(name)=>{
 
-  const fetcher= await fetch(`${process.env.FETCH_URL}/api/category?category=${name}`);
-  const fetcherPopular= await fetch(`${process.env.FETCH_URL}/api/news/type?type=popular`);
-  const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
-  const fetchData= await fetcher.json();
-  const popularData= await fetcherPopular.json();
-  const latestData = await fetcherLatest.json();
-  return {fetchData, popularData,latestData};
-  // ${process.env.FETCH_URL}
-  }
+try{
+  const syncData=async(name)=>{
+
+    const fetcher= await fetch(`${process.env.FETCH_URL}/api/category?category=${name}`);
+    const fetcherPopular= await fetch(`${process.env.FETCH_URL}/api/news/type?type=popular`);
+    const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
+    const fetchData= await fetcher.json();
+    const popularData= await fetcherPopular.json();
+    const latestData = await fetcherLatest.json();
+    return {fetchData, popularData,latestData};
+    // ${process.env.FETCH_URL}
+    }
+}
+catch(e){
+  console.error(e.message);
+}
+
+
+
 export default async function page({searchParams}) {
   // console.log(searchParams.category);
   const category=searchParams.category;

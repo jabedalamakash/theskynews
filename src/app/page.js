@@ -5,39 +5,45 @@ import LatestNews from "@/components/LatestNews";
 import SliderNews from "@/components/SliderNews";
 import Subscribe from "@/components/Subscribe";
 
-const syncData = async () => {
-  const fetcherSports = await fetch(
-    `${process.env.FETCH_URL}/api/category?category=Sports`
-  );
-  const fetcherTech = await fetch(
-    `${process.env.FETCH_URL}/api/category?category=Tech`
-  );
-  const fetcherEntertainment = await fetch(
-    `${process.env.FETCH_URL}/api/category?category=Entertainment`
-  );
-  const fetcherPopular = await fetch(
-    `${process.env.FETCH_URL}/api/news/type?type=popular`
-  );
-  const fetcherFeatured = await fetch(
-    `${process.env.FETCH_URL}/api/news/type?type=featured`
-  );
-
-  const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
-  const sportsData = await fetcherSports.json();
-  const techData = await fetcherTech.json();
-  const enterData = await fetcherEntertainment.json();
-  const popularData = await fetcherPopular.json();
-  const featureData = await fetcherFeatured.json();
-  const latestData = await fetcherLatest.json();
-  return {
-    sportsData: sportsData,
-    techData: techData,
-    enterData: enterData,
-    featureData: featureData,
-    popularData: popularData,
-    latestData: latestData,
+try{
+  const syncData = async () => {
+    const fetcherSports = await fetch(
+      `${process.env.FETCH_URL}/api/category?category=Sports`
+    );
+    const fetcherTech = await fetch(
+      `${process.env.FETCH_URL}/api/category?category=Tech`
+    );
+    const fetcherEntertainment = await fetch(
+      `${process.env.FETCH_URL}/api/category?category=Entertainment`
+    );
+    const fetcherPopular = await fetch(
+      `${process.env.FETCH_URL}/api/news/type?type=popular`
+    );
+    const fetcherFeatured = await fetch(
+      `${process.env.FETCH_URL}/api/news/type?type=featured`
+    );
+  
+    const fetcherLatest = await fetch(`${process.env.FETCH_URL}/api/latestnews/`);
+    const sportsData = await fetcherSports.json();
+    const techData = await fetcherTech.json();
+    const enterData = await fetcherEntertainment.json();
+    const popularData = await fetcherPopular.json();
+    const featureData = await fetcherFeatured.json();
+    const latestData = await fetcherLatest.json();
+    return {
+      sportsData: sportsData,
+      techData: techData,
+      enterData: enterData,
+      featureData: featureData,
+      popularData: popularData,
+      latestData: latestData,
+    };
   };
-};
+}
+catch(e){
+  console.error(e.message);
+}
+
 export default async function Home() {
   const { sportsData, techData, enterData, featureData, popularData,latestData } =
     await syncData();
